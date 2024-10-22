@@ -1,0 +1,84 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="static\css\style.css">
+
+    <title>ML Models</title>
+</head>
+
+<body>
+    <h1>Disease Classification Interface</h1>
+
+    <form action="/" method="POST">
+        <div class="form-group">
+            <label for="clump_thickness">Clump Thickness:</label>
+            <input type="text" id="clump_thickness" name="clump_thickness">
+        </div>
+
+        <div class="form-group">
+            <label for="uniformity_cellsize">Uniformity Cell Size:</label>
+            <input type="text" id="uniformity_cellsize" name="uniformity_cellsize">
+        </div>
+
+        <div class="form-group">
+            <label for="uniformity_cellshape">Uniformity Cell Shape:</label>
+            <input type="text" id="uniformity_cellshape" name="uniformity_cellshape">
+        </div>
+
+        <div class="form-group">
+            <label for="marginal_adhesion">Marginal Adhesion:</label>
+            <input type="text" id="marginal_adhesion" name="marginal_adhesion">
+        </div>
+
+        <div class="form-group">
+            <label for="epithelial_cellsize">Single Epithelial Cell Size:</label>
+            <input type="text" id="epithelial_cellsize" name="epithelial_cellsize">
+        </div>
+
+        <div class="form-group">
+            <label for="bland_chromatin">Bland Chromatin:</label>
+            <input type="text" id="bland_chromatin" name="bland_chromatin">
+        </div>
+
+        <div class="form-group">
+            <label for="normal_nucleoli">Normal Nucleoli:</label>
+            <input type="text" id="normal_nucleoli" name="normal_nucleoli">
+        </div>
+
+        <div class="form-group">
+            <label for="mitoses">Mitoses:</label>
+            <input type="text" id="mitoses" name="mitoses">
+        </div>
+
+        
+        <div class="radio-group">
+            <label for="">Classifier:</label>
+
+            <input type="radio" id="nearest_neighbor" name="classifier" value="Nearest Neighbor">
+            <label for="nearest_neighbor">Nearest Neighbor</label>
+
+            <input type="radio" id="naive_bayes" name="classifier" value="Naive Bayes">
+            <label for="naive_bayes">Naive Bayes</label>
+
+            <input type="radio" id="decision_tree" name="classifier" value="Decision Tree">
+            <label for="decision_tree">Decision Tree</label>
+        </div>
+
+        <button type="submit">Classify</button>
+    </form>
+
+    {% if response_data %}
+        <h2>Response:</h2>
+        <p>Inputs: {{ response_data['inputs'] }}</p>
+        <p>Classifier: {{ response_data['classifier'] }}</p>
+        <p>Prediction: {{ response_data['prediction'] }}</p>
+    {% endif %}
+</body>
+
+</html>
