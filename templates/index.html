@@ -1,4 +1,3 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="static\css\style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
 
     <title>ML Models</title>
 </head>
@@ -15,6 +14,7 @@
 <body>
     <h1>Disease Classification Interface</h1>
 
+    <!-- Changed the action to '/' -->
     <form action="/" method="POST">
         <div class="form-group">
             <label for="clump_thickness">Clump Thickness:</label>
@@ -56,7 +56,6 @@
             <input type="text" id="mitoses" name="mitoses">
         </div>
 
-        
         <div class="radio-group">
             <label for="">Classifier:</label>
 
@@ -73,11 +72,12 @@
         <button type="submit">Classify</button>
     </form>
 
-    {% if response_data %}
+    <!-- Display prediction results -->
+    {% if prediction %}
         <h2>Response:</h2>
-        <p>Inputs: {{ response_data['inputs'] }}</p>
-        <p>Classifier: {{ response_data['classifier'] }}</p>
-        <p>Prediction: {{ response_data['prediction'] }}</p>
+        <p>Inputs: {{ inputs }}</p>
+        <p>Classifier: {{ classifier }}</p>
+        <p>Prediction: {{ prediction }}</p>
     {% endif %}
 </body>
 

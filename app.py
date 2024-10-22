@@ -4,7 +4,10 @@ import numpy as np
 
 app = Flask(__name__)
 
+# Load the KNN model
 knn_model = joblib.load('model/knn_model.pkl')
+nb_model = joblib.load('model/naive_bayes_model.pkl')
+dtree_model = joblib.load('model/dtree_model.pkl')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -26,8 +29,15 @@ def home():
                                 marginal_adhesion, epithelial_cellsize,
                                 bland_chromatin, normal_nucleoli, mitoses]])
         
-        # Predict using the loaded model
-        prediction = knn_model.predict(input_data)
+        # Choose the appropriate model based on the selected classifier
+        if classifier == "Nearest Neighbor":
+            prediction = knn_model.predict(input_data)
+        elif classifier == "Naive Bayes":
+            prediction = nb_model.predict(input_data)
+        elif classifier == "Decision Tree":
+            prediction = dtree_model.predict(input_data)
+        else:
+            prediction = ["Unknown"]
 
         # Format prediction result
         prediction_result = ''
